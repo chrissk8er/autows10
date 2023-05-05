@@ -1,0 +1,63 @@
+{
+    "class": "AS3",
+    "action": "deploy",
+    "persist": true,
+    "declaration": {
+       "class": "ADC",
+       "schemaVersion": "3.0.0",
+       "id": "urn:uuid:33045210-3ab8-4636-9b2a-c98d22ab915d",
+       "label": "Student 1",
+       "remark": "Simple HTTP application with RR pool",
+       "Student1": {
+          "class": "Tenant",
+          "A1": {
+             "class": "Application",
+             "service": {
+                "class": "Service_HTTP",
+                "virtualAddresses": [
+                   "10.0.1.71"
+                ],
+                "pool": "web_poolewq2"
+             },
+             "web_poolewq2": {
+                "class": "Pool",
+                "monitors": [
+                   "http"
+                ],
+                "members": [{
+                   "servicePort": 80,
+                   "serverAddresses": [
+                      "192.0.1.21",
+                      "192.0.1.52"
+                   ]
+                }]
+             }
+          },
+              "A2": {
+             "class": "Application",
+             "V2": {
+                "class": "Service_HTTP",
+                "virtualAddresses": [
+                   "10.0.1.18"
+                ],
+                "pool": "web_pool12"
+             },
+             "web_pool12": {
+                "class": "Pool",
+                "monitors": [
+                   "http"
+                ],
+                "members": [{
+                   "servicePort": 80,
+                   "serverAddresses": [
+                      "192.0.1.7",
+                      "192.0.1.92"
+                   ]
+                }]
+             }
+          }
+       }
+    }
+ }
+ 
+ 
